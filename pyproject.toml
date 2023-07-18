@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "api-brasileirao"
+version = "0.1.0"
+description = "API com as informações da tabela do Brasileirão Serie A"
+authors = ["Gustavo H. O. Santos <gustavo.henrique.oliveira50@gmail.com>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pre-commit = "^3.3.3"
+selenium = "^4.10.0"
+fastapi = "^0.100.0"
+uvicorn = {extras = ["standard"], version = "^0.23.1"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
