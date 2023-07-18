@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "API com as informações da tabela do Brasileirão Serie A"
 authors = ["Gustavo H. O. Santos <gustavo.henrique.oliveira50@gmail.com>"]
 readme = "README.md"
-packages = []
+packages = [{include = "*.py", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -17,6 +17,8 @@ pandas = "^2.0.3"
 lxml = "^4.9.3"
 html5lib = "^1.1"
 
+[tool.poetry.scripts]
+localhost = "src.server:main"
 
 [build-system]
 requires = ["poetry-core"]
