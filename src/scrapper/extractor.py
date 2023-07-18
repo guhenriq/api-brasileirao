@@ -1,7 +1,7 @@
 import pandas as pd
 
 from selenium.webdriver.common.by import By
-from browser import Browser
+from .browser import Browser
 
 
 class Extractor(Browser):
@@ -30,6 +30,7 @@ class Extractor(Browser):
         li_classificacao = self.driver.find_element(By.XPATH, '//*[@id="sports-app"]/div/div[2]/div/div/div/ol/li[3]')
         li_classificacao.click()
 
+        # Extrai os dados da tabela
         self.driver.implicitly_wait(10)
         tabela_classificacao = self.driver.find_element(By.CLASS_NAME, 'Jzru1c')
 
@@ -39,4 +40,8 @@ class Extractor(Browser):
                  'VITVitórias', 'EEmpates', 'DERDerrotas', 'GMGols marcados',
                  'GCGols contra', 'SGSaldo de gols']]
 
-        return df
+        df.to_csv('data.csv', index=False, encoding='latin1', sep=';')
+
+        self.driver.close()
+
+        print('Dados atualizados!')
