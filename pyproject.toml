@@ -19,7 +19,7 @@ html5lib = "^1.1"
 webdriver-manager = "^3.8.6"
 
 [tool.poetry.scripts]
-localhost = "src.server:main"
+localhost = "server:main"
 
 [build-system]
 requires = ["poetry-core"]
