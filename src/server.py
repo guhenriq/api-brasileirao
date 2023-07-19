@@ -9,14 +9,22 @@ def server():
 
 def scrapping():
     while True:
-        extractor = Extractor()
-        extractor.extract()
-        
-        time.sleep(60)
+        try:
+            extractor = Extractor()
+            extractor.extract()
+            
+        except Exception as e:
+            print(e)
+        finally:
+            time.sleep(60)
 
 def main():
-    threading.Thread(target=server).start()
-    threading.Thread(target=scrapping).start()
+    thread_server = threading.Thread(target=server)
+    thread_server.start()
+
+    thread_scrapping = threading.Thread(target=scrapping)
+    thread_scrapping.daemon = True
+    thread_scrapping.start()
 
 if __name__ == '__main__':
     main()

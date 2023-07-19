@@ -1,7 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from src.main.routes import brasileirao_router
 
-app = FastAPI()
+app = FastAPI(
+    title="API Brasileirão",
+    summary="Dados atualizados do campeonato brasileiro",
+    version="1.0.0",
+    contact={
+        "name": "Gustavo Henrique Oliveira dos Santos",
+        "url": "https://www.linkedin.com/in/gustavo-henrique-oliveira-dos-santos-028aa4181/",
+        "email": "gustavo.henrique.oliveira50@gmail.com"
+    },
+)
 
 origins = ["*"]
 
@@ -13,6 +23,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get('/')
-async def status():
-    return {'status': 'ok'}
+app.include_router(brasileirao_router.router, prefix='/v1', tags=['Campeonato Brasileiro'])
